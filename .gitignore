@@ -1,3 +1,34 @@
-.vercel/
-.env
+# Node.js dependencies
 node_modules/
+
+# Environment variables
+.env
+
+# Vercel deployment folder
+.vercel/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output (if you add builds later)
+dist/
+build/
+
+# IDE/editor folders
+.vscode/
+.idea/
+
+# Optional: if using PM2 or similar process manager
+pids
+*.pid
+*.seed
+*.pid.lock
