@@ -3,6 +3,7 @@ import Summary from "../models/Summary.js";
 import { generateStructuredFeedback } from "../services/stage1StructuredFeedback.js";
 import { generateNarrativeFeedback } from "../services/stage2NarrativeFeedback.js";
 import pLimit from "p-limit";
+import { sendFeedbackEmail } from "../utils/emailService.js";
 
 const limit = pLimit(10); // Controls concurrency (10 requests at a time)
 
@@ -32,6 +33,10 @@ export async function handleFeedbackBatch(req, res) {
 
           // Mark summary as processed
           await Summary.findByIdAndUpdate(summaryDoc._id, { processed: true });
+
+          // if(summaryDoc.email){
+            await sendFeedbackEmail(narrative)
+          // }
 
           return {
             summaryId: summaryDoc._id,
